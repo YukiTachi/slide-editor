@@ -14,6 +14,8 @@
         <h1>スライドエディタ</h1>
         <div class="header-controls">
             <button class="btn" id="imageInsertBtn">🖼️ 画像挿入</button>
+            <button class="btn" onclick="imageInserter.convertBase64ImagesToExternal()">🔄 Base64変換</button>
+            <button class="btn" onclick="imageInserter.showImageManager()">📁 画像管理</button>
             <button class="btn" onclick="addSlide()">➕ スライド追加</button>
             <button class="btn" id="restoreBtn" onclick="manualRestore()">🔄 復元</button>
             <button class="btn" onclick="openPreviewWindow()">🔗 別ウィンドウで開く</button>

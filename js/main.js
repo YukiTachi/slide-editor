@@ -38,9 +38,14 @@ function updatePreview() {
     if (htmlContent) {
         placeholder.style.display = 'none';
         
+        // ローカルストレージの画像をdata URIに変換
+        const processedHTML = imageInserter ? 
+            imageInserter.processHTMLForPreview(htmlContent) : 
+            htmlContent;
+        
         const doc = previewFrame.contentDocument || previewFrame.contentWindow.document;
         doc.open();
-        doc.write(htmlContent);
+        doc.write(processedHTML);
         doc.close();
         
         const charCount = htmlContent.length;
@@ -73,9 +78,14 @@ function openPreviewWindow() {
         return;
     }
     
+    // ローカルストレージの画像をdata URIに変換
+    const processedHTML = imageInserter ? 
+        imageInserter.convertStorageImagesToDataURI(htmlContent) : 
+        htmlContent;
+    
     previewWindow.document.title = 'プレビュー - スライドエディタ';
     previewWindow.document.open();
-    previewWindow.document.write(htmlContent);
+    previewWindow.document.write(processedHTML);
     previewWindow.document.close();
     previewWindow.focus();
     
@@ -105,10 +115,15 @@ function copyToClipboard() {
         return;
     }
     
-    navigator.clipboard.writeText(htmlContent).then(() => {
+    // ローカルストレージの画像をdata URIに変換してコピー
+    const processedHTML = imageInserter ? 
+        imageInserter.convertStorageImagesToDataURI(htmlContent) : 
+        htmlContent;
+    
+    navigator.clipboard.writeText(processedHTML).then(() => {
         const statusText = document.getElementById('statusText');
         const originalText = statusText.textContent;
-        statusText.textContent = 'HTMLをクリップボードにコピーしました！';
+        statusText.textContent = 'HTMLをクリップボードにコピーしました！（画像も含む）';
         setTimeout(() => {
             statusText.textContent = originalText;
         }, 2000);

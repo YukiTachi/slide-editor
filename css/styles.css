@@ -305,3 +305,82 @@ body {
     background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%) !important;
     border: 2px dashed #27ae60 !important;
 }
+
+/* 画像挿入設定スタイル */
+.image-settings {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.image-settings label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #495057;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.image-settings label:hover {
+    background-color: #e9ecef;
+}
+
+.image-settings input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* 画像管理スタイル */
+.image-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.image-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: white;
+}
+
+.image-item img {
+    border-radius: 4px;
+    margin-right: 12px;
+}
+
+.image-info {
+    flex: 1;
+}
+
+.image-info strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #495057;
+}
+
+.image-info small {
+    color: #6c757d;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
