@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライドエディタ</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- カスタムCSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>スライドエディタ</h1>
+        <div class="header-controls">
+            <button class="btn" id="imageInsertBtn">🖼️ 画像挿入</button>
+            <button class="btn" onclick="addSlide()">➕ スライド追加</button>
+            <button class="btn" id="restoreBtn" onclick="manualRestore()">🔄 復元</button>
+            <button class="btn" onclick="openPreviewWindow()">🔗 別ウィンドウで開く</button>
+            <button class="btn" onclick="clearEditor()">🗑️ クリア</button>
+            <button class="btn" onclick="copyToClipboard()">📋 HTMLコピー</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="editor-panel">
+            <div class="panel-header">HTMLエディタ</div>
+            <textarea 
+                class="editor" 
+                id="htmlEditor" 
+                oninput="updatePreview()"
+            ></textarea>
+        </div>
+
+        <div class="resizer" onmousedown="startResize(event)"></div>
+
+        <div class="preview-panel">
+            <div class="panel-header">プレビュー</div>
+            <div class="preview-container">
+                <iframe id="previewFrame" class="preview-frame"></iframe>
+                <div class="placeholder" id="placeholder">
+                    A4横向きスライドのプレビューがここに表示されます
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <span id="statusText">準備完了 - スライドテンプレート読み込み済み</span>
+        <span id="autoSaveStatus" style="margin-left: 20px; font-weight: bold;"></span>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/slide-templates.js"></script>
+    <script src="js/autosave.js"></script>
+    <script src="js/image-inserter.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
