@@ -13,14 +13,39 @@
     <div class="header">
         <h1>スライドエディタ</h1>
         <div class="header-controls">
-            <button class="btn" id="imageInsertBtn">🖼️ 画像挿入</button>
-            <button class="btn" onclick="imageInserter.convertBase64ImagesToExternal()">🔄 Base64変換</button>
-            <button class="btn" onclick="imageInserter.showImageManager()">📁 画像管理</button>
-            <button class="btn" onclick="addSlide()">➕ スライド追加</button>
-            <button class="btn" id="restoreBtn" onclick="manualRestore()">🔄 復元</button>
-            <button class="btn" onclick="openPreviewWindow()">🔗 別ウィンドウで開く</button>
-            <button class="btn" onclick="clearEditor()">🗑️ クリア</button>
-            <button class="btn" onclick="copyToClipboard()">📋 HTMLコピー</button>
+            <!-- ハンバーガーメニューボタン -->
+            <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleHamburgerMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <!-- ハンバーガーメニュー -->
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <div class="menu-section">
+                    <h3>📝 編集</h3>
+                    <button class="menu-btn" onclick="addSlide()">➕ スライド追加</button>
+                    <button class="menu-btn" onclick="clearEditor()">🗑️ クリア</button>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>🖼️ 画像</h3>
+                    <button class="menu-btn" id="imageInsertBtn">🖼️ 画像挿入</button>
+                    <button class="menu-btn" onclick="imageInserter.convertBase64ImagesToExternal()">🔄 Base64変換</button>
+                    <button class="menu-btn" onclick="imageInserter.showImageManager()">📁 画像管理</button>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>💾 データ</h3>
+                    <button class="menu-btn" id="restoreBtn" onclick="manualRestore()">🔄 復元</button>
+                    <button class="menu-btn" onclick="copyToClipboard()">📋 HTMLコピー</button>
+                </div>
+                
+                <div class="menu-section">
+                    <h3>🔗 表示</h3>
+                    <button class="menu-btn" onclick="openPreviewWindow()">🔗 別ウィンドウで開く</button>
+                </div>
+            </div>
         </div>
     </div>
 

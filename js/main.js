@@ -6,6 +6,7 @@ let previewWindow = null;
 let autoSave = null;
 let imageInserter = null;
 let slideTemplates = null;
+let hamburgerMenuOpen = false;
 
 // 初期化
 document.addEventListener('DOMContentLoaded', () => {
@@ -251,6 +252,41 @@ document.addEventListener('keydown', (e) => {
                 manualRestore();
                 break;
         }
+    }
+});
+
+// ハンバーガーメニューの制御
+function toggleHamburgerMenu() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    
+    hamburgerMenuOpen = !hamburgerMenuOpen;
+    
+    if (hamburgerMenuOpen) {
+        hamburgerBtn.classList.add('active');
+        hamburgerMenu.classList.add('show');
+    } else {
+        hamburgerBtn.classList.remove('active');
+        hamburgerMenu.classList.remove('show');
+    }
+}
+
+// メニュー外クリックで閉じる
+document.addEventListener('click', (e) => {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    
+    if (hamburgerMenuOpen && 
+        !hamburgerBtn.contains(e.target) && 
+        !hamburgerMenu.contains(e.target)) {
+        toggleHamburgerMenu();
+    }
+});
+
+// ESCキーでメニューを閉じる
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hamburgerMenuOpen) {
+        toggleHamburgerMenu();
     }
 });
 
